@@ -1,9 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Freelancer Portfolio Website{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     {% include "./header.html" %}
@@ -13,5 +16,6 @@
 
     </div>
 {% include "./footer.html" %}
+    <script src="{% static 'js/demo.js' %}"></script>
 </body>
 </html>
