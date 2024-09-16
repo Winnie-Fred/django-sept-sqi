@@ -1,0 +1,9 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Menu{% endblock title %}
+
+{% block body %}
+{% for item in menu %}
+<p>{{ item }}</p>
+{% endfor %}
+{% endblock body %}

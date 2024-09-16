@@ -1,0 +1,45 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+
+{% block title %}Welcome to Sugarplum Bakery{% endblock title %}
+
+{% block body %}
+<div class="container">
+    <section class="intro">
+        <h2>About Us</h2>
+        <p>At Sugarplum Bakery, we believe in creating a magical experience with every bite. From our hand-crafted pastries to our seasonal specialties, each treat is made with love and the finest ingredients. Whether you’re here for our famous Sugarplum Croissants or our delicate Lavender Honey Scones, you’ll always find something to delight your senses.</p>
+    </section>
+
+    <section class="highlights">
+        <div class="highlight">
+            <img src="croissant.jpg" alt="Sugarplum Croissants">
+            <h3>Our Signature Croissants</h3>
+            <p>Flaky, buttery, and filled with our homemade plum compote. A must-try!</p>
+        </div>
+        <div class="highlight">
+            <img src="cake.jpg" alt="Sugarplum Cake">
+            <h3>Sugarplum Cake</h3>
+            <p>A delicate plum buttercream cake, perfect for any occasion.</p>
+        </div>
+        <div class="highlight">
+            <img src="workshop.jpg" alt="Baking Workshop">
+            <h3>Baking Workshops</h3>
+            <p>Join our monthly workshops and learn the art of baking with our head chef, Amelia Thompson.</p>
+        </div>
+    </section>
+
+    <a href="{% url 'menu:menu_list' %}">Check out our menu</a>
+
+    <div id="popUp" class="hidden">
+        <div>Sign up to our newsletter</div>
+        <a href="#">Sign Up</a>
+        <button type="click" class="close">Close</button>
+    </div>
+
+</div>
+{% endblock body %}
+
+{% block scripts %}
+<script src="{% static 'js/popup.js' %}"></script>
+{% endblock scripts %}

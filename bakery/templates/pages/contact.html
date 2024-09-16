@@ -1,0 +1,35 @@
+{% extends "partials/base.html" %}
+{% block title %}Contact Us{% endblock title %}
+
+{% block body %}
+<div class="container">
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you! Whether you have a question about our pastries, want to place an order, or just want to say hello, feel free to get in touch using the form below or through our contact details.</p>
+
+    <form action="/send-message" method="POST">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Enter your message here" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+        <h2>Our Contact Details</h2>
+        <p><strong>Address:</strong> 123 Sweet Street, Sugarplum Town, CA 90210</p>
+        <p><strong>Phone:</strong> (123) 456-7890</p>
+        <p><strong>Email:</strong> <a href="mailto:info@sugarplumbakery.com">info@sugarplumbakery.com</a></p>
+        <p><strong>Opening Hours:</strong></p>
+        <ul>
+            <li>Monday - Friday: 7:00 AM - 7:00 PM</li>
+            <li>Saturday: 8:00 AM - 6:00 PM</li>
+            <li>Sunday: Closed</li>
+        </ul>
+    </div>
+</div>
+{% endblock body %}
