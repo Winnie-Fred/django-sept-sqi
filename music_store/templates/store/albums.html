@@ -1,0 +1,12 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Albums{% endblock title %}
+
+{% block body %}
+<h2>Albums Ordered by Release Date</h2>
+<ul>
+{% for album in albums %}
+<li>{{ album }} - {{ album.artist }}</li>
+{% endfor %}
+</ul>
+{% endblock body %}
