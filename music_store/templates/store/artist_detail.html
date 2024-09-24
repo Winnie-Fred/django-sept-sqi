@@ -1,0 +1,13 @@
+{% extends "partials/base.html" %}
+
+{% block title %}{{ artist.name }}{% endblock title %}
+
+{% block body %}
+<h2>{{ artist.name }}</h2>
+<p>Debut Year: {{ artist.debut_year }}</p>
+{% if artist.picture %}
+<img src="{{ artist.picture.url }}" alt="Artist Picture">
+{% else %}
+<p>No image for this artist</p>
+{% endif %}
+{% endblock body %}

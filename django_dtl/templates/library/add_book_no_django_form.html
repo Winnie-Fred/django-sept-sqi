@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add a Book</title>
+</head>
+<body>
+    <h1>Add a Book</h1>
+    <div>
+        <form method="POST" action="{% url 'library:add_book_no_django_form' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <p style="color: red">{{ error }}</p>
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" name="title">
+            </div>
+
+            <div>
+                <label for="author">Author:</label>
+                <select name="author">
+                {% for author in authors %}
+                <option value="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</option>
+                {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <label for="number_of_pages">Number of Pages:</label>
+                <input type="number" name="number_of_pages">
+            </div>
+
+            <div>
+                <label for="published_on">Publication Date:</label>
+                <input type="date" name="published_on">
+            </div>
+
+            <div>
+                <label for="cover_page">Cover Image:</label>
+                <input type="file" name="cover_page">
+            </div>
+
+            <button type="submit">Add Book</button>
+
+        </form>
+    </div>
+</body>
+</html>
