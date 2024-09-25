@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from authors.models import Author
 from .models import Book
+from .forms import BookForm, BookManualForm
 
 def home(request):
     return render(request, 'library/home.html')
@@ -58,3 +59,38 @@ def add_book_no_django_form(request):
         return redirect("library:book_list")
 
     return render(request, "library/add_book_no_django_form.html", context)
+
+
+def add_book_django_form(request):
+    form = BookForm()
+    if request.method == "POST":
+        print(request.POST)
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("library:book_list")
+
+    context = {
+        "add_book_form": form,
+    }
+
+    return render(request, "library/add_book_with_django_form.html", context)
+
+def add_book_manual_html_plus_django_form(request):
+    form = BookManualForm()
+    if request.method == "POST":
+        form = BookManualForm(request.POST, request.FILES)
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            title = cleaned_data.get("title")
+            author = cleaned_data.get("author")
+            number_of_pages = cleaned_data.get("number_of_pages")
+            published_on = cleaned_data.get("published_on")
+            cover_page = cleaned_data.get("cover_page")
+            Book.objects.create(title=title, author=author, number_of_pages=number_of_pages, published_on=published_on, cover_page=cover_page)
+            return redirect("library:book_list")
+
+    context = {
+        "manual_book_form": form, 
+    }
+    return render(request, "library/add_book_with_manual_html_form.html", context)

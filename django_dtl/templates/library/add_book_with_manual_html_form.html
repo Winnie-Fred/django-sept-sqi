@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add a Book</title>
+</head>
+<body>
+    <h1>Add a Book</h1>
+    <div>
+        <form method="POST" action="{% url 'library:add_book_manual_html_plus_django_form' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% for error in manual_book_form.non_field_errors %}
+            {{ error }}            
+            {% endfor %}
+
+            <div>
+                <label for="title">Title:</label>
+                {% comment %} <input type="text" name="title" value="{{ manual_book_form.title.value|default_if_none:'' }}"> {% endcomment %}
+                <input type="text" name="title" {% if manual_book_form.title.value %} value="{{ manual_book_form.title.value }}" {% endif %}>
+                {% if manual_book_form.errors.title %}
+                {% for error in manual_book_form.errors.title %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="author">Author:</label>
+                {{ manual_book_form.author }}
+                {% if manual_book_form.errors.author %}
+                {% for error in manual_book_form.errors.author %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="number_of_pages">Number of Pages:</label>
+                <input type="number" name="number_of_pages" required {% if manual_book_form.number_of_pages.value %}value="{{ manual_book_form.number_of_pages.value }}"{% endif %}>
+                {% if manual_book_form.errors.number_of_pages %}
+                {% for error in manual_book_form.errors.number_of_pages %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+                
+
+            </div>
+
+            <div>
+                <label for="published_on">Publication Date:</label>
+                <input type="date" name="published_on" required {% if manual_book_form.published_on.value %}value="{{ manual_book_form.published_on.value }}"{% endif %}>
+                {% if manual_book_form.errors.published_on %}
+                {% for error in manual_book_form.errors.published_on %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+                
+            </div>
+
+            <div>
+                <label for="cover_page">Cover Image:</label>
+                <input type="file" name="cover_page" {% if manual_book_form.cover_page.value %}value="{{ manual_book_form.cover_page.value }}"{% endif %}>
+                {% if manual_book_form.errors.cover_page %}
+                {% for error in manual_book_form.errors.cover_page %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+
+            </div>
+
+            <button type="submit">Add Book</button>
+
+        </form>
+    </div>
+</body>
+</html>
