@@ -1,0 +1,55 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+{{ book.title }}
+{% endblock title %}
+
+{% block body %}
+<h2>{{ book.title }}</h2>
+<h3>Written by {{ book.author }}</h3>
+<h3>Published on {{ book.publication_date }}</h3>
+
+{% if reviews %}
+
+<h2>Reviews</h2>
+{% for review in reviews %}
+<div>
+    <p>Reviewer Name: {{ review.reviewer_name }}</p>
+    <p>{{review.comment }}</p>
+    <p>Rating: {{review.rating }}</p>
+</div>
+{% endfor %}
+{% else %}
+<h3>No Reviews for this book yet</h3>
+{% endif %}
+
+
+<h2>Add Review</h2>
+<div>
+    <form action="{% url 'reviews:create_review' book.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" value="{{ book.pk }}" name="book">
+    {{ form.errors.book }}
+    <div>
+        <label for="reviewer_name">Reviewer Name:</label>
+        {{ form.reviewer_name }}
+        {{ form.errors.reviewer_name }}
+    </div>
+    <div>
+        <label for="ratins">Rating:</label>
+        {{ form.rating }}
+        {{ form.errors.rating }}
+
+    </div>
+    <div>
+        <label for="comment">Comment:</label>
+        {{ form.comment }}
+        {{ form.errors.comment }}
+
+    </div>
+        <button type="submit">Post Review</button>
+    </form>
+</div>
+
+{% endblock body %}
+
