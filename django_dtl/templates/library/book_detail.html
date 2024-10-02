@@ -14,5 +14,10 @@
     {% else %}
     <p>No Cover Page for this book</p>
     {% endif %}
+
+    {% comment %} <a href="{% url 'library:update_book_model_form' book.pk %}">Edit Book</a> {% endcomment %}
+    <a href="{% url 'library:update_book_forms_form' book.pk %}">Edit Book</a>
+    <a href="{% url 'library:confirm_delete' book.pk %}">Delete Book</a>
+
 </body>
 </html>

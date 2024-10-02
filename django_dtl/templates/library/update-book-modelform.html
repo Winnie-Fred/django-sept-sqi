@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update {{ book.title }}</title>
+</head>
+<body>
+    <h1>Update {{ book.title }}</h1>
+    <form action="{% url 'library:update_book_model_form' book.id %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button type="submit">Update Book</button>
+    </form>
+</body>
+</html>
