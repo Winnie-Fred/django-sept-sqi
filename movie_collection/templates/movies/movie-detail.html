@@ -1,0 +1,22 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+{{ movie.title }}
+{% endblock title %}
+
+{% block body %}
+<p>{{ movie.title }}</p>
+<p>{{ movie.director }}</p>
+<p>{{ movie.release_date }}</p>
+<p>{{ movie.get_genre_display }}</p>
+<p>{{ movie.description }}</p>
+{% if movie.poster %}
+<img src="{{ movie.poster.url }}">
+{% else %}
+<p>No poster for this movie</p>
+{% endif %}
+
+<a href="{% url 'movies:edit_movie' movie.pk %}">Edit Movie</a>
+<a href="{% url 'movies:confirm_delete' movie.pk %}">Delete Movie</a>
+
+{% endblock body %}

@@ -22,13 +22,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('library/', include("library.urls")),
-    path('authors/', include("authors.urls")),
-    path('dtl/', include("dtl.urls")),
-    path('auth/', include("authentication.urls")),
-    path('', include("pages.urls")),
+    path('', include("movies.urls")),
 ]
-
 
 if settings.DEBUG:
     urlpatterns += static(

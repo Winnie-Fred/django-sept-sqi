@@ -4,17 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
+    <style>
+    .success {
+        color: green;
+    }
+    </style>
 </head>
 <body>
     <header>
         <nav>
-            <ul>
-                <li>Home Page</li>
-                <li>About</li>
-                <li>Contact</li>
-            </ul>
+            {% if request.user.is_authenticated %}
+                <form action="{% url 'authentication:logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Log Out</button>
+                </form>
+            {% else %}
+                <a href="{% url 'authentication:login' %}">Log In</a>
+            {% endif %}
         </nav>
     </header>
+
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
     {% block content %}
     

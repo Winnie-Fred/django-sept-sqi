@@ -1,9 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Library Home</title>
-</head>
-<body>
-    <h1>Welcome to the Library</h1>
-</body>
-</html>
+{% extends "partials/base.html" %}
+
+{% block title %}
+Library Home
+{% endblock title %}
+
+{% block content %}
+<h1>
+    Welcome to the Library
+    {% if request.user.is_authenticated %}
+    , {{ request.user }}
+    {% endif %}
+</h1>
+{% endblock content %}
