@@ -13,8 +13,12 @@ List of Movies
     </ul>
 </div>
 
-<form action="{% url 'movies:create_movie' %}" method="GET">
+{% comment %} <form action="{% url 'movies:create_movie' %}" method="GET">
     <button type="submit">Create Movie</button>
-</form>
+</form> {% endcomment %}
+
+{% comment %} <a class="create-movie-btn" href="{% url 'movies:create_movie' %}">Create Movie</a> {% endcomment %}
+
+<button type="click" onclick="window.location.href='{% url 'movies:create_movie' %}'">Create Movie</button>
 
 {% endblock body %}

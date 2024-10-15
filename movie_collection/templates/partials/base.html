@@ -1,11 +1,39 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+
+    {% if messages %}
+    {% for message in messages %}
+    <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    {% else %}
+    {% endif %}
+
+    <header>
+        <nav>
+            <ul>
+                {% if request.user.is_authenticated %}
+                <form action="{% url 'authentication:logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Log Out</button>
+                </form>
+                {% else %}
+                <li><a href="{% url 'authentication:login' %}">Log In</a></li>                
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    {% if request.user.is_authenticated %}
+    <h3>Welcome {{ request.user }}</h3>
+    {% endif %}
     {% block body %}
     {% endblock body %}
 </body>

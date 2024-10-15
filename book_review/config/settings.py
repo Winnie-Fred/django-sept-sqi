@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3vnr)7(sy@qtk4235csbq+pyec3w8@+x5zkhqn6oj^rk=maz^('
+SECRET_KEY = 'django-insecure-$@cx0@$n2nfa$74tzji&@==tqi#90p56@rs-l0b_z8ijhbtkt^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Local
-    'movies',
-    'authentication',
+    'review',
 ]
 
 MIDDLEWARE = [
@@ -122,15 +121,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-LOGIN_URL = "authentication:login"
-LOGOUT_REDIRECT_URL = "movies:movie_list"
-LOGIN_REDIRECT_URL = "movies:movie_list"

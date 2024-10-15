@@ -6,8 +6,7 @@ Create Movie
 
 {% block body %}
 <form action="{% url 'movies:create_movie' %}" method="POST" enctype="multipart/form-data">
-{% csrf_token %}
-{{ form.as_p }}
-<button type="submit">Create Movie</button>
+    {% include "./movie-form.html" %}
+    <button type="submit">Create Movie</button>
 </form>
 {% endblock body %}

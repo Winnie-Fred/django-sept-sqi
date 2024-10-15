@@ -1,0 +1,15 @@
+.create-movie-btn {
+    padding: 5px;
+    background-color: #167d8f;
+    text-decoration: none;
+    border-radius: 5px; 
+    color: rgba(255, 255, 255, 0.753);
+}
+
+.error {
+    color: #cf1919;
+}
+
+.success {
+    color: #06a006;
+}
