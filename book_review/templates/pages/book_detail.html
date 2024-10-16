@@ -1,0 +1,13 @@
+{% extends "partials/base.html" %}
+
+{% block body %}
+<div class="book">
+    <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+    <h3>{{ book.title }}</h3>
+    <h4>By {{ book.author }}</h4>
+    <h5>Genre: {{ book.get_genre_display }}</h5>
+    <h5>Published on {{ book.publication_date }}</h5>
+    <h5>ISBN {{ book.isbn }}</h5>
+    <h5>{{ book.number_of_pages }} pages</h5>
+</div>
+{% endblock body %}

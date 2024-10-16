@@ -1,0 +1,28 @@
+.container {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+.book {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.book img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.book h3 {
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+}
