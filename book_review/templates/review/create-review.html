@@ -1,0 +1,16 @@
+{% extends "partials/base.html" %}
+
+{% block body %}
+  <div class="create-review" id="centered">
+    <form action="{% url 'review:create_review' book.pk %}" method="POST" name="form_for_treehouse_contest">
+    {% csrf_token %}
+      <h2 class="review-heading">Leave a Review for {{ book.title }}</h2>
+        <input type="hidden" name="book" value="{{ book.id }}">
+        <input type="hidden" name="added_by" value="{{ request.user.id }}">
+      <textarea name="review"  rows="8" placeholder="What did you think about {{ book.title }}?"></textarea>
+      <input type="number" name="rating" placeholder="Rating"><br>
+      <input type="submit" value="Submit" id="send"><br>
+    </form>
+   </div>
+
+{% endblock body %}

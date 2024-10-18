@@ -25,6 +25,16 @@
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
 
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Qwigley' rel='stylesheet' type='text/css'>
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+      <!-- Authentication CSS -->
+      <link rel="stylesheet" href="{% static 'css/authentication.css' %}">
+      <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+
+
       <!-- Our Custom CSS -->
       <link rel="stylesheet" href="{% static 'css/main.css' %}">
       
@@ -64,7 +74,16 @@
                                  <li><a href="{% url 'pages:library' %}">library</a></li>
                                  <li><a href="{% url 'pages:contact' %}">Contact us</a></li>
                                  <li class="mean-last"> <a href="#"><img src="{% static 'images/search_icon.png' %}" alt="#" /></a> </li>
-                                 <li class="mean-last"> <a href="#"><img src="{% static 'images/top-icon.png' %}" alt="#" /></a> </li>
+                                 <li class="mean-last">
+                                 {% if request.user.is_authenticated %}
+                                 <form action="{% url 'authentication:logout' %}" method="POST">
+                                 {% csrf_token %}
+                                 <button class="auth-btn" type="submit">LOG OUT</button>
+                                 </form>
+                                 {% else %}
+                                 <button class="auth-btn" type="click" onclick="window.location.href='{% url 'authentication:login' %}'">LOG IN</button>
+                                 {% endif %}
+                                 </li>
                               </ul>
                            </nav>
                         </div>
@@ -77,6 +96,15 @@
          <!-- end header inner -->
       </header>
       <!-- end header -->
+    <div class="padding"></div>
+
+   {% if messages %}
+   <ul class="messagelist">
+   {% for message in messages %}
+   <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+   {% endfor %}
+   </ul>
+   {% endif %}
 
     {% block body %}
       <!-- start home -->
@@ -141,5 +169,9 @@
       <!-- sidebar -->
       <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
       <script src="{% static 'js/custom.js' %}"></script>
+      
+      <!-- main js -->
+      <script src="{% static 'js/main.js' %}"></script>
+
    </body>
 </html>

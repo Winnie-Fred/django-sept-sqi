@@ -1,3 +1,7 @@
+.padding {
+    margin-top: 90px;
+}
+
 .container {
     width: 90%;
     margin: auto;
@@ -26,3 +30,107 @@
     font-size: 1.2em;
     margin: 10px 0 5px;
 }
+
+.field-error {
+    color: #b90c0c;
+}
+
+.auth-btn, .leave-review-btn {
+    background-color: #b32137;
+    color: #fff;
+    font-size: 16px;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.leave-review-btn {
+    text-decoration: none;
+}
+
+.reviews {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.messagelist {
+    margin: 0;
+    padding: 0;
+}
+
+.messagelist li {
+    display: block;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    padding: 10px 10px 10px 65px;
+    margin: 0 0 10px 0;
+    background: #006b1b url(../img/icon-yes.svg) 40px 12px no-repeat;
+    background-size: 16px auto;
+    color: #fff;
+    word-break: break-word;
+}
+
+.success {
+    color: #006b1b;
+}
+
+/*********** General CSS ***********/  
+  /*********** Form CSS ***********/
+  #centered {
+    max-width: 300px;
+    margin: 50px auto 0;
+  }
+  
+  .review-heading {
+    font-family: 'Qwigley', cursive;
+    font-size: 3em;
+    color: #9931405d;
+    text-shadow: 1px 3px black;
+  }
+  
+  .create-review input, .create-review textarea {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    width: 100%;
+    margin: 8px 0;
+    text-indent: 1em;
+    padding: 10px 0;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+  }
+  
+  .create-review input[type="submit"] {
+    background-color: #4d90fe;
+    color: white;
+    border: 1px solid #3079ed;
+  }
+  
+  .create-review input[type="submit"]:hover {
+    background-color: #4d9aff;
+    color: white;
+  }
+  
+  .create-review p {
+    margin-top: 10px;
+    font-size: 0.75em;
+  }
+  
+  .create-review footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .create-review a {
+    color:inherit;
+  }
+  
+  .create-review a:hover {
+    color: #4d9aff;
+  }
+  
+  .create-review i {
+    margin: 5px;
+  }
+  
+  
+  
+  

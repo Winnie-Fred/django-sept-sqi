@@ -9,5 +9,21 @@
     <h5>Published on {{ book.publication_date }}</h5>
     <h5>ISBN {{ book.isbn }}</h5>
     <h5>{{ book.number_of_pages }} pages</h5>
+    <a class="leave-review-btn" href="{% url 'review:create_review' book.pk %}">Leave a Review</a>
 </div>
+
+<div class="reviews">
+{% if reviews %}
+    <h2 style="text-align: center;">Reviews</h2>
+    {% for review in reviews %}
+    <h3>{{ review.review }}</p>
+    <p>Rating: {{ review.rating }}</p>
+    <h4>{{ review.added_by }}</p>
+    <p>{{ review.added_on }}</p>
+    {% endfor %}
+{% else %}
+    <h4 style="text-align: center;">No reviews for {{ book.title }}</h4>
+{% endif %}
+</div>
+
 {% endblock body %}

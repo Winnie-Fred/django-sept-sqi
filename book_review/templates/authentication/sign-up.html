@@ -1,0 +1,81 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block body %}
+
+
+<section class="authentication-container forms">
+
+    <!-- Signup Form -->
+
+    <div class="form signup">
+        <div class="form-content">
+            <header>Signup</header>
+            <form action="{% url 'authentication:sign_up' %}" method="POST">
+                {% csrf_token %}
+                <div>
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                    <p class="field-error">{{ error }}</p>
+                    {% endfor %}                
+                {% else %}
+                {% endif %}
+                </div>
+                <div class="field input-field">
+                    {% if form.username.errors %}
+                        {% for error in form.username.errors %}
+                        <p class="field-error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    <input name="username" type="text" placeholder="Username" class="input" {% if form.username.value %}value="{{ form.username.value }}"{% endif %}>
+                </div>
+
+                <div class="field input-field">
+                    {% if form.password1.errors %}
+                        {% for error in form.password1.errors %}
+                        <p class="field-error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    <input name="password1" type="password" placeholder="Create password" class="password">
+                </div>
+
+                <div class="field input-field">
+                    {% if form.password2.errors %}
+                        {% for error in form.password2.errors %}
+                        <p class="field-error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    <input name="password2" type="password" placeholder="Confirm password" class="password">
+                    <i class='bx bx-hide eye-icon'></i>
+                </div>
+
+                <div class="field button-field">
+                    <button type="submit">Signup</button>
+                </div>
+            </form>
+
+            <div class="form-link">
+                <span>Already have an account? <a href="{% url 'authentication:login' %}" class="link login-link">Login</a></span>
+            </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="media-options">
+            <a href="#" class="field facebook">
+                <i class='bx bxl-facebook facebook-icon'></i>
+                <span>Login with Facebook</span>
+            </a>
+        </div>
+
+        <div class="media-options">
+            <a href="#" class="field google">
+                <img src="{% static 'images/google.png' %}" alt="" class="google-img">
+                <span>Login with Google</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock body %}

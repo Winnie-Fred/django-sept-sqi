@@ -23,7 +23,7 @@ class Movie(models.Model):
     genre = models.CharField(choices=GenreChoices, default=GenreChoices.ACTION, max_length=2)
     description = models.TextField()
     poster = models.ImageField(upload_to="posters/", blank=True, null=True)
-    added_by = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    added_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

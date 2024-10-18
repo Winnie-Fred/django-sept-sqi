@@ -55,6 +55,7 @@ def validate_rating(rating):
         raise ValidationError("Rating must be between 1 and 5")
 
 class Review(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
     review = models.TextField()
     rating = models.PositiveIntegerField(validators=[validate_rating])
     added_by = models.ForeignKey(User, on_delete=models.CASCADE)
